@@ -24,27 +24,26 @@ public class JsonUtils {
     public static Sandwich parseSandwichJson(String json) {
 
 
-        JSONObject jsonObject = null;
         try {
-            jsonObject = new JSONObject(json);
+            JSONObject rootObject = new JSONObject(json);
 
             /** Access Name*/
-            JSONObject subObj = jsonObject.getJSONObject("name");
+            JSONObject subObj = rootObject.getJSONObject("name");
             Log.v(TAG, "JSON FOR NAMEEE" + subObj);
             /** Retrieve Main Name*/
             String mainName = subObj.getString("mainName");
             Log.v(TAG, "JSON FOR MAINNAME" + mainName);
 
             /** Retrieve Place of origin*/
-            String origin = jsonObject.getString("placeOfOrigin");
+            String origin = rootObject.getString("placeOfOrigin");
             Log.v(TAG, "JSON FOR ORIGIN" + origin);
 
             /** Retrieve Description*/
-            String des = jsonObject.getString("description");
+            String des = rootObject.getString("description");
             Log.v(TAG, "JSON FOR DESCRIPTION" + des);
 
             /** Image*/
-            String image = jsonObject.getString("image");
+            String image = rootObject.getString("image");
 
 
             /** Retrieve also known as from the JSON Array*/
@@ -56,7 +55,7 @@ public class JsonUtils {
                 alsoKnownList.add(alsoKnown);
 
                 /** Retrieve for ingredients*/
-                JSONArray ingreArray = jsonObject.getJSONArray("ingredients");
+                JSONArray ingreArray = rootObject.getJSONArray("ingredients");
 
                 List<String> ingreList = new ArrayList<>();
 
